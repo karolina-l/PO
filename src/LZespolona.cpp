@@ -63,27 +63,43 @@ LZespolona  operator / (LZespolona  L1,  LZespolona  L2)
   wynik.im = wynik.im/sprz;
   return wynik;
 }
+///////////////////////
+LZespolona std::istream  &operator >> (std::istream & czyt, LZespolona L1)
+{
+  char znak;
+  czyt >> znak;
+  if(znak!= '(')
+  {
+    czyt.setstate(std::ios::failbit);
+  }
+  czyt>>L1.re;
+  czyt>>L1.im;
+  czyt>>znak;
+  if(znak!= 'i')
+  {
+    czyt.setstate(std::ios::failbit);
+  }
+  czyt>>znak;
+  if(znak!= ')')
+  {
+    czyt.setstate(std::ios::failbit);
+  }
+  return czyt;
+}
 
+LZespolona std::ostream  &operator << (std::ostream &wys, LZespolona L1)
+{
+    wys << "(" << L1.re  << std::showpos << L1.im  << std::noshowpos <<  "i)";
+    return wys;
+}
+
+
+//////////////////////
 /* tworzenie liczby zespolonej*/
 LZespolona utworz(double re, double im)
 {
   LZespolona L1;
   L1.re = re;
   L1.im = im;
-  return L1;
-}
-
-/*wyswietlanie liczby zespolonej*/
-void wyswietl(LZespolona L1)
-{
-  std::cout<< "(" << L1.re << std::showpos << L1.im << std::noshowpos << "i)";
-}
-/*Wczytanie i utworzenie liczby zespolonej*/
-LZespolona wczytaj(LZespolona L1)
-{
-  double re, im;
-  char n1, n2, i;
-  std ::cin>>n1>>re>>im>>i>>n2;
-  L1=utworz(re, im);
   return L1;
 }

@@ -7,8 +7,7 @@
  * w pliku naglowkowym.
  */
 
-WyrazenieZesp wczytajWyr(WyrazenieZesp WZ)
-{
+/*{
   double re1, re2, im1, im2;
   char n11, n12, n21, n22, i1, i2,o;
 //  Operator operat;
@@ -30,4 +29,4 @@ void WyswietlWyr(WyrazenieZesp WZ)
   wyswietl(L1);
   //wyswietl operator
   wyswietl(L2);
-}
+}*/

@@ -27,9 +27,11 @@ LZespolona  operator - (LZespolona  L1,  LZespolona  L2);
 LZespolona  operator * (LZespolona  L1,  LZespolona  L2);
 LZespolona  operator / (LZespolona  L1,  LZespolona  L2);
 int  sprzezenie (LZespolona  L1);
+LZespolona std::istream &operator >> (std ::istream &czyt, LZespolona &L1);
+LZespolona std::ostream &operator << (std ::ostream &wys, LZespolona &L1);
 LZespolona  utworz (double re, double im);
-LZespolona wczytaj (LZespolona L1);
-void  wyswietl (LZespolona L1);
+//bool wczytaj (LZespolona L1);
+//void  wyswietl (LZespolona L1);
 
 
 #endif

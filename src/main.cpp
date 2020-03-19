@@ -23,7 +23,7 @@ int main(int argc, char **argv)
   if (InicjalizujTest(&BazaT,argv[1]) == false) {
     cerr << " Inicjalizacja testu nie powiodla sie." << endl;
     return 1;
-  }
+  }//
 
 
 
@@ -65,6 +65,9 @@ int main(int argc, char **argv)
     cout<< l7; */
   //LZespolona l= wczytaj(l);
   //wyswietl(l);
-  WyrazenieZesp w= wczytajWyr(w);
-  WyswietlWyr(w);
+  //WyrazenieZesp w= wczytajWyr(w);
+  //WyswietlWyr(w);
+  cout << "podaj liczbe: ";
+  LZespolona L1;
+  std::cin >> L1;
 }
