@@ -30,3 +30,68 @@ void WyswietlWyr(WyrazenieZesp WZ)
   //wyswietl operator
   wyswietl(L2);
 }*/
+////////////////////////////////////////
+WyrazenieZesp wczytaj(WyrazenieZesp  WZ)
+{
+  LZespolona L1,L2;
+  char znak;
+  std::cin >> L1;
+  std::cin >> znak;
+  std::cin >> L2;
+  WZ.Arg1=L1;
+  WZ.Arg2=L2;
+  if (znak=='+')
+  {
+    WZ.Op=Op_Dodaj;
+    return WZ;
+  }
+  else if (znak=='-')
+  {
+    WZ.Op=Op_Odejmij;
+    return WZ;
+  }
+  else if (znak=='*')
+  {
+    WZ.Op=Op_Mnoz;
+    return WZ;
+  }
+  else if (znak=='/')
+  {
+    WZ.Op=Op_Dziel;
+    return WZ;
+  }
+  else
+  {
+    std::cerr<<"Błędny znak."<<std::endl;
+    return WZ;
+  }
+
+}
+void wyswietl(WyrazenieZesp  WZ)
+{
+  LZespolona L1,L2;
+  char znak;
+  L1=WZ.Arg1;
+  L2=WZ.Arg2;
+  if(WZ.Op==Op_Dodaj)
+  {
+    znak='+';
+    std ::cout<<L1<<znak<<L2;
+  }
+  if(WZ.Op==Op_Odejmij)
+  {
+    znak='-';
+    std::cout<<L1<<znak<<L2;
+  }
+  if(WZ.Op==Op_Mnoz)
+  {
+    znak='*';
+    std::cout<<L1<<znak<<L2;
+  }
+  if(WZ.Op==Op_Dziel)
+  {
+    znak='/';
+    std::cout<<L1<<znak<<L2;
+  }
+
+}

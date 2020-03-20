@@ -1,6 +1,6 @@
 #ifndef WYRAZENIEZESP_HH
 #define WYRAZENIEZESP_HH
-
+#include <iostream>
 
 
 #include "LZespolona.hh"
@@ -29,8 +29,8 @@ struct WyrazenieZesp {
  *
  */
 
-WyrazenieZesp wczytajWyr(WyrazenieZesp  WZ);
-void WyswietlWyr(WyrazenieZesp  WZ);
+WyrazenieZesp wczytaj(WyrazenieZesp  WZ);
+void wyswietl(WyrazenieZesp  WZ);
 LZespolona Oblicz(WyrazenieZesp  WZ);
 
 #endif

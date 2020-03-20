@@ -1,5 +1,6 @@
 #ifndef LZESPOLONA_HH
 #define LZESPOLONA_HH
+#include <iostream>
 
 /*!
  *  Plik zawiera definicje struktury LZesplona oraz zapowiedzi
@@ -26,12 +27,10 @@ LZespolona  operator + (LZespolona  L1,  LZespolona  L2);
 LZespolona  operator - (LZespolona  L1,  LZespolona  L2);
 LZespolona  operator * (LZespolona  L1,  LZespolona  L2);
 LZespolona  operator / (LZespolona  L1,  LZespolona  L2);
-int  sprzezenie (LZespolona  L1);
-LZespolona std::istream &operator >> (std ::istream &czyt, LZespolona &L1);
-LZespolona std::ostream &operator << (std ::ostream &wys, LZespolona &L1);
+double  sprzezenie (LZespolona  L1);
+std::istream &operator >> (std ::istream &czyt, LZespolona &L1);
+std::ostream &operator << (std ::ostream &wys, LZespolona L1);
 LZespolona  utworz (double re, double im);
-//bool wczytaj (LZespolona L1);
-//void  wyswietl (LZespolona L1);
 
 
 #endif

@@ -41,10 +41,10 @@ LZespolona  operator * (LZespolona  L1,  LZespolona  L2)
   return wynik;
 }
 
-int  sprzezenie (LZespolona  L1)
+double  sprzezenie (LZespolona  L1)
 {
   LZespolona czynnik;
-  int wynik;
+  double wynik;
   czynnik.re = L1.re;
   czynnik.im = (-1)*L1.im;
   wynik = (czynnik.re * L1.re) + (czynnik.im * L1.im);
@@ -64,13 +64,14 @@ LZespolona  operator / (LZespolona  L1,  LZespolona  L2)
   return wynik;
 }
 ///////////////////////
-LZespolona std::istream  &operator >> (std::istream & czyt, LZespolona L1)
+ std::istream  &operator >> (std::istream & czyt, LZespolona &L1)
 {
   char znak;
   czyt >> znak;
   if(znak!= '(')
   {
     czyt.setstate(std::ios::failbit);
+    std::cerr<<"Błąd zapisu liczby zespolonej: nie ma (."<<std::endl;
   }
   czyt>>L1.re;
   czyt>>L1.im;
@@ -78,21 +79,22 @@ LZespolona std::istream  &operator >> (std::istream & czyt, LZespolona L1)
   if(znak!= 'i')
   {
     czyt.setstate(std::ios::failbit);
+    std::cerr<<"Błąd zapisu liczby zespolonej: nie ma i."<<std::endl;
   }
   czyt>>znak;
   if(znak!= ')')
   {
     czyt.setstate(std::ios::failbit);
+    std::cerr<<"Błąd zapisu liczby zespolonej: nie ma )."<<std::endl;
   }
   return czyt;
 }
 
-LZespolona std::ostream  &operator << (std::ostream &wys, LZespolona L1)
+std::ostream  &operator << (std::ostream &wys, LZespolona L1)
 {
     wys << "(" << L1.re  << std::showpos << L1.im  << std::noshowpos <<  "i)";
     return wys;
 }
-
 
 //////////////////////
 /* tworzenie liczby zespolonej*/
