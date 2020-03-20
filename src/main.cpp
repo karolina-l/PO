@@ -68,11 +68,13 @@ int main(int argc, char **argv)
   //wyswietl(l);
   //WyrazenieZesp w= wczytajWyr(w);
   //WyswietlWyr(w);
-  cout << "podaj Wyrazenie: ";
-/*  LZespolona L1;
+  //cout << "podaj Wyrazenie: ";
+ LZespolona L1;
   std::cin >> L1;
-  cout << L1;*/
-  WyrazenieZesp WZ1 = wczytaj(WZ1);
-  wyswietl(WZ1);
+  cout << L1;
+  cout<<sprzezenie(L1);
+  //WyrazenieZesp WZ1 = wczytaj(WZ1);
+  //wyswietl(WZ1);
+
 
 }

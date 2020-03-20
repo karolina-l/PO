@@ -1,12 +1,13 @@
 #include "LZespolona.hh"
 #include <iostream>
+#include <cstdlib>
 
 
 /*!
  * Realizuje dodanie dwoch liczb zespolonych.
  * Argumenty:
- *    Skl1 - pierwszy skladnik dodawania,
- *    Skl2 - drugi skladnik dodawania.
+ *    L1 - pierwszy skladnik dodawania,
+ *    L2 - drugi skladnik dodawania.
  * Zwraca:
  *    Sume dwoch skladnikow przekazanych jako parametry.
  */
@@ -19,6 +20,14 @@ LZespolona  operator + (LZespolona  L1,  LZespolona L2)
   return Wynik;
 }
 
+/*!
+ * Realizuje odejmowanie dwoch liczb zespolonych.
+ * Argumenty:
+ *    L1 - pierwszy skladnik odejmowania,
+ *    L2 - drugi skladnik odejmowania.
+ * Zwraca:
+ *    Roznice dwoch skladnikow przekazanych jako parametry.
+ */
 LZespolona  operator - (LZespolona  L1,  LZespolona L2)
 {
   LZespolona  Wynik;
@@ -28,6 +37,14 @@ LZespolona  operator - (LZespolona  L1,  LZespolona L2)
   return Wynik;
 }
 
+/*!
+ * Realizuje mnozenie dwoch liczb zespolonych.
+ * Argumenty:
+ *    L1 - pierwszy skladnik mnozenia,
+ *    L2 - drugi skladnik mnozenia.
+ * Zwraca:
+ *    Iloczyn dwoch skladnikow przekazanych jako parametry.
+ */
 LZespolona  operator * (LZespolona  L1,  LZespolona  L2)
 {
   LZespolona  wynik, czynnik;
@@ -43,19 +60,29 @@ LZespolona  operator * (LZespolona  L1,  LZespolona  L2)
 
 double  sprzezenie (LZespolona  L1)
 {
-  LZespolona czynnik;
   double wynik;
-  czynnik.re = L1.re;
-  czynnik.im = (-1)*L1.im;
-  wynik = (czynnik.re * L1.re) + (czynnik.im * L1.im);
+  wynik = (L1.re * L1.re) + (L1.im * L1.im);
   return wynik;
 }
 
+/*!
+ * Realizuje dzielenie dwoch liczb zespolonych.
+ * Argumenty:
+ *    L1 - pierwszy skladnik dzielenia,
+ *    L2 - drugi skladnik dzielenia.
+ * Zwraca:
+ *    Iloraz dwoch skladnikow przekazanych jako parametry.
+ */
 LZespolona  operator / (LZespolona  L1,  LZespolona  L2)
 {
   LZespolona wynik, czynnik;
-  int  sprz;
+  double  sprz;
   sprz = sprzezenie(L2);
+  if(sprz==0)
+  {
+    std::cerr<<"nie można dzielić przez 0";
+    exit(EXIT_FAILURE);
+  }
   czynnik.re = L2.re;
   czynnik.im = L2.im * (-1);
   wynik = L1 * czynnik;
@@ -66,28 +93,49 @@ LZespolona  operator / (LZespolona  L1,  LZespolona  L2)
 ///////////////////////
  std::istream  &operator >> (std::istream & czyt, LZespolona &L1)
 {
-  char znak;
-  czyt >> znak;
-  if(znak!= '(')
+  char znak1, znak2, znak3;
+  double a,b;
+  int proba=0;
+while(proba<4)
+  {
+      czyt >> znak1;
+      if(znak1!= '(')
   {
     czyt.setstate(std::ios::failbit);
     std::cerr<<"Błąd zapisu liczby zespolonej: nie ma (."<<std::endl;
+    std::cin.clear(); std::cin.sync();
+    proba++;
+    break;
   }
-  czyt>>L1.re;
-  czyt>>L1.im;
-  czyt>>znak;
-  if(znak!= 'i')
+
+  czyt>>a;
+  czyt>>b;
+  czyt>>znak2;
+  if(znak2!= 'i')
   {
     czyt.setstate(std::ios::failbit);
     std::cerr<<"Błąd zapisu liczby zespolonej: nie ma i."<<std::endl;
+    std::cin.clear(); std::cin.sync();
+    proba++;
+    break;
   }
-  czyt>>znak;
-  if(znak!= ')')
+
+  czyt>>znak3;
+  if(znak3!= ')')
   {
     czyt.setstate(std::ios::failbit);
     std::cerr<<"Błąd zapisu liczby zespolonej: nie ma )."<<std::endl;
+    std::cin.clear(); std::cin.sync();
+    proba++;
+    break;
   }
-  return czyt;
+  else
+  {
+    L1=utworz(a,b);
+    return czyt;
+  }
+
+}
 }
 
 std::ostream  &operator << (std::ostream &wys, LZespolona L1)
