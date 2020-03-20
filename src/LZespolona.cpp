@@ -93,50 +93,28 @@ LZespolona  operator / (LZespolona  L1,  LZespolona  L2)
 ///////////////////////
  std::istream  &operator >> (std::istream & czyt, LZespolona &L1)
 {
-  char znak1, znak2, znak3;
+  char znak;
   double a,b;
-  int proba=0;
-while(proba<4)
-  {
-      czyt >> znak1;
-      if(znak1!= '(')
-  {
-    czyt.setstate(std::ios::failbit);
-    std::cerr<<"Błąd zapisu liczby zespolonej: nie ma (."<<std::endl;
-    std::cin.clear(); std::cin.sync();
-    proba++;
-    break;
-  }
+
+  czyt >> znak;
+  if(znak!= '(')    czyt.setstate(std::ios::failbit);
 
   czyt>>a;
   czyt>>b;
-  czyt>>znak2;
-  if(znak2!= 'i')
-  {
-    czyt.setstate(std::ios::failbit);
-    std::cerr<<"Błąd zapisu liczby zespolonej: nie ma i."<<std::endl;
-    std::cin.clear(); std::cin.sync();
-    proba++;
-    break;
-  }
+  czyt>>znak;
+  if(znak!= 'i')    czyt.setstate(std::ios::failbit);
 
-  czyt>>znak3;
-  if(znak3!= ')')
-  {
-    czyt.setstate(std::ios::failbit);
-    std::cerr<<"Błąd zapisu liczby zespolonej: nie ma )."<<std::endl;
-    std::cin.clear(); std::cin.sync();
-    proba++;
-    break;
-  }
-  else
-  {
-    L1=utworz(a,b);
-    return czyt;
-  }
+  czyt>>znak;
+  if(znak!= ')')    czyt.setstate(std::ios::failbit);
 
+  if(!czyt.fail())
+  {
+    L1.re=a;
+    L1.im=b;
+  }
+  return czyt;
 }
-}
+
 
 std::ostream  &operator << (std::ostream &wys, LZespolona L1)
 {
@@ -152,4 +130,58 @@ LZespolona utworz(double re, double im)
   L1.re = re;
   L1.im = im;
   return L1;
+}
+
+/*bool wczytajLZ(LZespolona L1)
+{
+  int  licznik = 0;
+  std::cin>>L1;
+  if (!std::cin.good())
+  {
+    licznik++;
+    std::cout<<licznik<<std::endl;
+    if(licznik==3)
+    {
+      std::cout<<"wychodze"<<std::endl;
+      return false ;
+      exit(1);
+    }
+    std::cin.clear();
+      std::cout<<"clear"<<std::endl;
+    std::cin.sync();
+      std::cout<<"sync"<<std::endl;
+    std::cerr<<"Bledny zapis liczby zespolonej"<<std::endl;
+    wczytajLZ(L1);
+  }
+  else
+  {
+    std::cout<<"tru"<<std::endl;
+    return true;
+  }
+}*/
+
+
+bool wczytajLZ(LZespolona &L1)
+{
+  int licznik=0;
+  while (licznik<3)
+  {
+    std::cout<<"wpisz: ";
+    std::cin>>L1;
+    if(!std::cin.good())
+    {
+      licznik++;
+      std::cin.sync();
+      std::cin.clear();
+      std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
+
+
+    }
+    else
+    {
+      return true;
+      break;
+    }
+  }
+  return false;
 }

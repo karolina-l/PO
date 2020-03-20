@@ -31,6 +31,6 @@ double  sprzezenie (LZespolona  L1);
 std::istream &operator >> (std ::istream &czyt, LZespolona &L1);
 std::ostream &operator << (std ::ostream &wys, LZespolona L1);
 LZespolona  utworz (double re, double im);
-
+bool wczytajLZ(LZespolona &L1);
 
 #endif

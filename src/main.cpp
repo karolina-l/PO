@@ -47,32 +47,13 @@ int main(int argc, char **argv)
 
 
   //moje nowe
-  /*
-  LZespolona L1=utworz(2,3);
-    wyswietl(L1);
-  LZespolona L2=utworz(2,4);
-  wyswietl(L2);
-  LZespolona L8=utworz(2,-4);
-  wyswietl (L8);
-    LZespolona L3=L1+L2;
-    wyswietl(L3);
-    LZespolona L4=L1-L2;
-    wyswietl(L4);
-    LZespolona L5=L1*L8;
-    wyswietl(L5);
-     LZespolona L6=L1/L2;
-     wyswietl(L6);
-    int l7=sprzezenie(L2);
-    cout<< l7; */
-  //LZespolona l= wczytaj(l);
-  //wyswietl(l);
-  //WyrazenieZesp w= wczytajWyr(w);
-  //WyswietlWyr(w);
-  //cout << "podaj Wyrazenie: ";
+
  LZespolona L1;
-  std::cin >> L1;
-  cout << L1;
-  cout<<sprzezenie(L1);
+ //std::cin >>L1;
+int licznik = 0;
+wczytajLZ(L1);
+
+cout << L1;
   //WyrazenieZesp WZ1 = wczytaj(WZ1);
   //wyswietl(WZ1);
 
