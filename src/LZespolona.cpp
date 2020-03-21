@@ -80,7 +80,7 @@ LZespolona  operator / (LZespolona  L1,  LZespolona  L2)
   sprz = sprzezenie(L2);
   if(sprz==0)
   {
-    std::cerr<<"nie można dzielić przez 0";
+    std::cerr<<"nie można dzielić przez 0"<<std::endl;
     exit(EXIT_FAILURE);
   }
   czynnik.re = L2.re;
@@ -91,17 +91,32 @@ LZespolona  operator / (LZespolona  L1,  LZespolona  L2)
   return wynik;
 }
 
+LZespolona  operator / (LZespolona  L1,  double dziel)
+{
+  if(dziel!=0)
+  {
+    L1.re=L1.re/dziel;
+    L1.im=L1.im/dziel;
+    return L1;
+  }
+  else
+  {
+    std::cerr<<"Nie mozna dzielic przez 0"<<std::endl;
+  }
+
+}
+
 bool operator == (LZespolona  L1,  LZespolona  L2)
 {
   if(L1.re==L2.re && L1.im==L2.im)
 {
-  std::cout<<"prawda";
+  //std::cout<<"prawda";
   return true;
 }
 
   else
   {
-    std::cout<<"falsz";
+    //std::cout<<"falsz";
     return false;
   }
 }
