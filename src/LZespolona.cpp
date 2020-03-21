@@ -175,8 +175,9 @@ bool wczytajLZ(LZespolona &L1)
     {
       licznik++;
       std::cout<< licznik<<std::endl;
-      std::cin.sync();
       std::cin.clear();
+      std::cin.ignore(9999,'\n');
+
       std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
 
 

@@ -49,15 +49,15 @@ int main(int argc, char **argv)
   //moje nowe
 
  LZespolona L1;
- L1=utworz(2,2);
-double a=0;
+ //L1=utworz(2,2);
+//double a=0;
 
-cout<<L1/a<<std::endl;
+//cout<<L1/a<<std::endl;
 
 
  //std::cin >>L1;
-//wczytajLZ(L1);
-//cout << L1;
+wczytajLZ(L1);
+cout << L1;
   //WyrazenieZesp WZ1 = wczytaj(WZ1);
   //wyswietl(WZ1);
 
