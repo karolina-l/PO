@@ -27,6 +27,7 @@ LZespolona  operator + (LZespolona  L1,  LZespolona  L2);
 LZespolona  operator - (LZespolona  L1,  LZespolona  L2);
 LZespolona  operator * (LZespolona  L1,  LZespolona  L2);
 LZespolona  operator / (LZespolona  L1,  LZespolona  L2);
+bool  operator == (LZespolona  L1,  LZespolona  L2);
 double  sprzezenie (LZespolona  L1);
 std::istream &operator >> (std ::istream &czyt, LZespolona &L1);
 std::ostream &operator << (std ::ostream &wys, LZespolona L1);

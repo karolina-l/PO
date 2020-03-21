@@ -90,6 +90,22 @@ LZespolona  operator / (LZespolona  L1,  LZespolona  L2)
   wynik.im = wynik.im/sprz;
   return wynik;
 }
+
+bool operator == (LZespolona  L1,  LZespolona  L2)
+{
+  if(L1.re==L2.re && L1.im==L2.im)
+{
+  std::cout<<"prawda";
+  return true;
+}
+
+  else
+  {
+    std::cout<<"falsz";
+    return false;
+  }
+}
+
 ///////////////////////
  std::istream  &operator >> (std::istream & czyt, LZespolona &L1)
 {

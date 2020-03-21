@@ -48,10 +48,18 @@ int main(int argc, char **argv)
 
   //moje nowe
 
- LZespolona L1;
+ LZespolona L1, L2, L3;
+ L1=utworz(2,2);
+ L2=utworz(2,2);
+ L3=utworz(3,5);
+
+L1==L2;
+cout<<std::endl;
+L1==L3;
+
  //std::cin >>L1;
-wczytajLZ(L1);
-cout << L1;
+//wczytajLZ(L1);
+//cout << L1;
   //WyrazenieZesp WZ1 = wczytaj(WZ1);
   //wyswietl(WZ1);
 
