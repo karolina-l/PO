@@ -132,34 +132,6 @@ LZespolona utworz(double re, double im)
   return L1;
 }
 
-/*bool wczytajLZ(LZespolona L1)
-{
-  int  licznik = 0;
-  std::cin>>L1;
-  if (!std::cin.good())
-  {
-    licznik++;
-    std::cout<<licznik<<std::endl;
-    if(licznik==3)
-    {
-      std::cout<<"wychodze"<<std::endl;
-      return false ;
-      exit(1);
-    }
-    std::cin.clear();
-      std::cout<<"clear"<<std::endl;
-    std::cin.sync();
-      std::cout<<"sync"<<std::endl;
-    std::cerr<<"Bledny zapis liczby zespolonej"<<std::endl;
-    wczytajLZ(L1);
-  }
-  else
-  {
-    std::cout<<"tru"<<std::endl;
-    return true;
-  }
-}*/
-
 
 bool wczytajLZ(LZespolona &L1)
 {
@@ -168,9 +140,10 @@ bool wczytajLZ(LZespolona &L1)
   {
     std::cout<<"wpisz: ";
     std::cin>>L1;
-    if(!std::cin.good())
+    if(std::cin.fail())
     {
       licznik++;
+      std::cout<< licznik<<std::endl;
       std::cin.sync();
       std::cin.clear();
       std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
@@ -180,7 +153,6 @@ bool wczytajLZ(LZespolona &L1)
     else
     {
       return true;
-      break;
     }
   }
   return false;

@@ -50,9 +50,7 @@ int main(int argc, char **argv)
 
  LZespolona L1;
  //std::cin >>L1;
-int licznik = 0;
 wczytajLZ(L1);
-
 cout << L1;
   //WyrazenieZesp WZ1 = wczytaj(WZ1);
   //wyswietl(WZ1);
