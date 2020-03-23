@@ -120,7 +120,10 @@ bool operator == (LZespolona  L1,  LZespolona  L2)
     return false;
   }
 }
-
+bool  operator != (LZespolona  L1,  LZespolona  L2);
+{
+  return !(L1==L2);
+}
 ///////////////////////
  std::istream  &operator >> (std::istream & czyt, LZespolona &L1)
 {
@@ -131,6 +134,7 @@ bool operator == (LZespolona  L1,  LZespolona  L2)
   while(licznik<3)
   {
     czyt >> znak;
+    czyt.setstate(std::ios::goodbit);
     if(znak!= '(')
     {
       czyt.setstate(std::ios::failbit);
