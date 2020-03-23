@@ -126,33 +126,42 @@ bool operator == (LZespolona  L1,  LZespolona  L2)
 {
   char znak;
   double a,b;
+  int licznik=0;
 
-  czyt >> znak;
-  if(znak!= '(')
+  while(licznik<3)
   {
-    czyt.setstate(std::ios::failbit);
-    std::cin.clear();
-    std::cin.ignore(9999,'\n');
-    std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
+    czyt >> znak;
+    if(znak!= '(')
+    {
+      czyt.setstate(std::ios::failbit);
+      std::cin.clear();
+      std::cin.ignore(9999,'\n');
+      std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
+    }
+    czyt>>a;
+    czyt>>b;
+    czyt>>znak;
+    if(znak!= 'i')
+    {
+      czyt.setstate(std::ios::failbit);
+      std::cin.clear();
+      std::cin.ignore(9999,'\n');
+      std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
+    }
+    czyt>>znak;
+    if(znak!= ')')
+    {
+      czyt.setstate(std::ios::failbit);
+      std::cin.clear();
+      std::cin.ignore(9999,'\n');
+      std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
+    }
+    if(!czyt.fail())
+    {
+      break;
+    }
   }
-  czyt>>a;
-  czyt>>b;
-  czyt>>znak;
-  if(znak!= 'i')
-  {
-    czyt.setstate(std::ios::failbit);
-    std::cin.clear();
-    std::cin.ignore(9999,'\n');
-    std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
-  }
-  czyt>>znak;
-  if(znak!= ')')
-  {
-    czyt.setstate(std::ios::failbit);
-    std::cin.clear();
-    std::cin.ignore(9999,'\n');
-    std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
-  }
+
   if(!czyt.fail())
   {
     L1.re=a;
