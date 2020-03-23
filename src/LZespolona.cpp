@@ -128,16 +128,31 @@ bool operator == (LZespolona  L1,  LZespolona  L2)
   double a,b;
 
   czyt >> znak;
-  if(znak!= '(')    czyt.setstate(std::ios::failbit);
-
+  if(znak!= '(')
+  {
+    czyt.setstate(std::ios::failbit);
+    std::cin.clear();
+    std::cin.ignore(9999,'\n');
+    std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
+  }
   czyt>>a;
   czyt>>b;
   czyt>>znak;
-  if(znak!= 'i')    czyt.setstate(std::ios::failbit);
-
+  if(znak!= 'i')
+  {
+    czyt.setstate(std::ios::failbit);
+    std::cin.clear();
+    std::cin.ignore(9999,'\n');
+    std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
+  }
   czyt>>znak;
-  if(znak!= ')')    czyt.setstate(std::ios::failbit);
-
+  if(znak!= ')')
+  {
+    czyt.setstate(std::ios::failbit);
+    std::cin.clear();
+    std::cin.ignore(9999,'\n');
+    std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
+  }
   if(!czyt.fail())
   {
     L1.re=a;
@@ -146,25 +161,7 @@ bool operator == (LZespolona  L1,  LZespolona  L2)
   return czyt;
 }
 
-
-std::ostream  &operator << (std::ostream &wys, LZespolona L1)
-{
-    wys << "(" << L1.re  << std::showpos << L1.im  << std::noshowpos <<  "i)";
-    return wys;
-}
-
-//////////////////////
-/* tworzenie liczby zespolonej*/
-LZespolona utworz(double re, double im)
-{
-  LZespolona L1;
-  L1.re = re;
-  L1.im = im;
-  return L1;
-}
-
-
-bool wczytajLZ(LZespolona &L1)
+/*bool wczytajLZ(LZespolona &L1)
 {
   int licznik=0;
   while (licznik<3)
@@ -188,4 +185,20 @@ bool wczytajLZ(LZespolona &L1)
     }
   }
   return false;
+}*/
+
+std::ostream  &operator << (std::ostream &wys, LZespolona L1)
+{
+    wys << "(" << L1.re  << std::showpos << L1.im  << std::noshowpos <<  "i)";
+    return wys;
+}
+
+//////////////////////
+/* tworzenie liczby zespolonej*/
+LZespolona utworz(double re, double im)
+{
+  LZespolona L1;
+  L1.re = re;
+  L1.im = im;
+  return L1;
 }

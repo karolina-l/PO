@@ -55,8 +55,8 @@ int main(int argc, char **argv)
 //cout<<L1/a<<std::endl;
 
 
- //std::cin >>L1;
-wczytajLZ(L1);
+std::cin >>L1;
+//wczytajLZ(L1);
 cout << L1;
   //WyrazenieZesp WZ1 = wczytaj(WZ1);
   //wyswietl(WZ1);
