@@ -5,7 +5,31 @@
 using std :: cout;
 
 
+bool wczytajLZ(LZespolona &L1)
+{
+  int licznik=0;
+  while (licznik<3)
+  {
+    std::cout<<"wpisz: ";
+    std::cin>>L1;
+    if(std::cin.fail())
+    {
+      licznik++;
+      std::cout<< licznik<<std::endl;
+      std::cin.clear();
+      std::cin.ignore(9999,'\n');
 
+      std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
+
+
+    }
+    else
+    {
+      return true;
+    }
+  }
+  return false;
+}
 
 int main(int argc, char **argv)
 {
@@ -48,18 +72,20 @@ int main(int argc, char **argv)
 
   //moje nowe
 
- LZespolona L1;
+// LZespolona L1;
  //L1=utworz(2,2);
 //double a=0;
 
 //cout<<L1/a<<std::endl;
 
 
-std::cin >>L1;
+//std::cin >>L1;
 //wczytajLZ(L1);
-cout << L1;
-  //WyrazenieZesp WZ1 = wczytaj(WZ1);
+//cout << L1;
+  WyrazenieZesp WZ1;
+  std::cin >> WZ1;
   //wyswietl(WZ1);
-
+  if(!std::cin.fail())
+  cout<<WZ1;
 
 }

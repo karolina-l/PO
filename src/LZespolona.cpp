@@ -102,6 +102,7 @@ LZespolona  operator / (LZespolona  L1,  double dziel)
   else
   {
     std::cerr<<"Nie mozna dzielic przez 0"<<std::endl;
+        exit(EXIT_FAILURE);
   }
 
 }
@@ -120,7 +121,7 @@ bool operator == (LZespolona  L1,  LZespolona  L2)
     return false;
   }
 }
-bool  operator != (LZespolona  L1,  LZespolona  L2);
+bool  operator != (LZespolona  L1,  LZespolona  L2)
 {
   return !(L1==L2);
 }
@@ -129,18 +130,12 @@ bool  operator != (LZespolona  L1,  LZespolona  L2);
 {
   char znak;
   double a,b;
-  int licznik=0;
 
-  while(licznik<3)
-  {
     czyt >> znak;
-    czyt.setstate(std::ios::goodbit);
     if(znak!= '(')
     {
       czyt.setstate(std::ios::failbit);
-      std::cin.clear();
-      std::cin.ignore(9999,'\n');
-      std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
+      //std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
     }
     czyt>>a;
     czyt>>b;
@@ -148,57 +143,23 @@ bool  operator != (LZespolona  L1,  LZespolona  L2);
     if(znak!= 'i')
     {
       czyt.setstate(std::ios::failbit);
-      std::cin.clear();
-      std::cin.ignore(9999,'\n');
-      std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
+      //std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
     }
     czyt>>znak;
     if(znak!= ')')
     {
       czyt.setstate(std::ios::failbit);
-      std::cin.clear();
-      std::cin.ignore(9999,'\n');
-      std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
+      //std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
     }
+
     if(!czyt.fail())
     {
-      break;
+      L1.re=a;
+      L1.im=b;
     }
-  }
-
-  if(!czyt.fail())
-  {
-    L1.re=a;
-    L1.im=b;
-  }
   return czyt;
 }
 
-/*bool wczytajLZ(LZespolona &L1)
-{
-  int licznik=0;
-  while (licznik<3)
-  {
-    std::cout<<"wpisz: ";
-    std::cin>>L1;
-    if(std::cin.fail())
-    {
-      licznik++;
-      std::cout<< licznik<<std::endl;
-      std::cin.clear();
-      std::cin.ignore(9999,'\n');
-
-      std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
-
-
-    }
-    else
-    {
-      return true;
-    }
-  }
-  return false;
-}*/
 
 std::ostream  &operator << (std::ostream &wys, LZespolona L1)
 {
