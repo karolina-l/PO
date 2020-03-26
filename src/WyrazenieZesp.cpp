@@ -98,3 +98,29 @@ std::ostream &operator << (std ::ostream &wys, WyrazenieZesp WZ)
   }
   return wys;
 }
+
+LZespolona Oblicz(WyrazenieZesp WZ)
+{
+  LZespolona L1;
+  switch (WZ.Op) {
+    case Op_Dodaj:
+      L1=WZ.Arg1+WZ.Arg2;
+      return L1;
+      break;
+
+    case Op_Odejmij:
+      L1=WZ.Arg1-WZ.Arg2;
+      return L1;
+      break;
+
+    case Op_Mnoz:
+      L1=WZ.Arg1*WZ.Arg2;
+      return L1;
+      break;
+
+    case Op_Dziel:
+      L1=WZ.Arg1/WZ.Arg2;
+      return L1;
+      break;
+  }
+}

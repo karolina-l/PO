@@ -1,44 +1,21 @@
 #include <iostream>
 #include "BazaTestu.hh"
+#include "statystyka.hh"
 //#include "WyrazenieZesp.hh"
 
 using std :: cout;
 
-
-bool wczytajLZ(LZespolona &L1)
-{
-  int licznik=0;
-  while (licznik<3)
-  {
-    std::cout<<"wpisz: ";
-    std::cin>>L1;
-    if(std::cin.fail())
-    {
-      licznik++;
-      std::cout<< licznik<<std::endl;
-      std::cin.clear();
-      std::cin.ignore(9999,'\n');
-
-      std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
-
-
-    }
-    else
-    {
-      return true;
-    }
-  }
-  return false;
-}
-
 int main(int argc, char **argv)
 {
+  LZespolona odp, wyn;
+  Stat stat;
+  zeruj(stat);
 
-  /* if (argc < 2) {
-    cout << endl;
-    cout << " Brak opcji okreslajacej rodzaj testu." << endl;
-    cout << " Dopuszczalne nazwy to:  latwy, trudny." << endl;
-    cout << endl;
+  if (argc < 2) {
+    cout << std::endl;
+    cout << " Brak opcji okreslajacej rodzaj testu." << std::endl;
+    cout << " Dopuszczalne nazwy to:  latwy, trudny." <<std:: endl;
+    cout << std::endl;
     return 1;
   }
 
@@ -46,46 +23,61 @@ int main(int argc, char **argv)
   BazaTestu   BazaT = { nullptr, 0, 0 };
 
   if (InicjalizujTest(&BazaT,argv[1]) == false) {
-    cerr << " Inicjalizacja testu nie powiodla sie." << endl;
+    std::cerr << " Inicjalizacja testu nie powiodla sie." << std::endl;
     return 1;
-  }//
-
-
-
-  cout << endl;
-  cout << " Start testu arytmetyki zespolonej: " << argv[1] << endl;
-  cout << endl;
-
-  WyrazenieZesp   WyrZ_PytanieTestowe;
-
-  while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) {
-    cout << " Czesc rzeczywista pierwszego argumentu: ";
-    cout << WyrZ_PytanieTestowe.Arg1.re << endl;
   }
 
 
-  cout << endl;
-  cout << " Koniec testu" << endl;
-  cout << endl;
-  */
 
+  cout << std::endl;
+  cout << " Start testu arytmetyki zespolonej: " << argv[1] << std::endl;
+  cout << std::endl;
 
-  //moje nowe
+  WyrazenieZesp   WyrZ_PytanieTestowe;
+//////////////////////////////////////////////////////////////
+  while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe))
+  {
+    cout << " Oblicz ";
+    cout << WyrZ_PytanieTestowe << ":"<<std::endl;
+    wyn=Oblicz(WyrZ_PytanieTestowe);
+    cout <<"wyn: " <<wyn<<std::endl;
+    int licznik_prob=0;
 
-// LZespolona L1;
- //L1=utworz(2,2);
-//double a=0;
+    while (licznik_prob<3)
+    {
+      std::cin>>odp;
+      if(std::cin.fail())
+      {
+        licznik_prob++;
+        std::cin.clear();
+        std::cin.ignore(9999,'\n');
+        std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
+      }
+      else
+      {
+        break;
+      }
+    }
 
-//cout<<L1/a<<std::endl;
+      cout<<odp.re<<", "<<wyn.re<<std::endl;
+      cout<<odp.im<<", "<<wyn.im<<std::endl;
+    if(odp==wyn)
+    {
+      dodaj_dobra(stat);
+      cout<<"dobra odpowiedz! ";
+    }
+    else
+    {
+      dodaj_zla(stat);
+      cout<< "zla odpowiedz :(";
+    }
+  }
 
+  procent_dobrych(stat);
+  cout << std::endl;
+  cout << " Koniec testu" << std::endl;
+  cout <<stat;
+  cout << std::endl;
 
-//std::cin >>L1;
-//wczytajLZ(L1);
-//cout << L1;
-  WyrazenieZesp WZ1;
-  std::cin >> WZ1;
-  //wyswietl(WZ1);
-  if(!std::cin.fail())
-  cout<<WZ1;
-
+  return 0;
 }
