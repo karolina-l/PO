@@ -109,7 +109,7 @@ LZespolona  operator / (LZespolona  L1,  double dziel)
 
 bool operator == (LZespolona  L1,  LZespolona  L2)
 {
-  if(L1.re==L2.re && L1.im==L2.im)
+  if(L1.re-L2.re==0 && L1.im-L2.im==0)
 {
   //std::cout<<"prawda";
   return true;
