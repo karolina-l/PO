@@ -4,9 +4,9 @@
 
 
 struct Stat{
-  int dobre;
-  int zle;
-  double procent;
+  int dobre; //pole na dobre odpowiedzi
+  int zle;  //pole na zle odpowiedzi
+  double procent;  //pole na procent dobrych odpowiedzi
 };
 
 void dodaj_dobra(Stat &stat);

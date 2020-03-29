@@ -91,6 +91,14 @@ LZespolona  operator / (LZespolona  L1,  LZespolona  L2)
   return wynik;
 }
 
+/*!
+ * Realizuje dzielenie liczby zespolonej i double.
+ * Argumenty:
+ *    L1 - pierwszy skladnik dzielenia,
+ *    dziel - drugi skladnik dzielenia.
+ * Zwraca:
+ *    Iloraz dwoch skladnikow przekazanych jako parametry.
+ */
 LZespolona  operator / (LZespolona  L1,  double dziel)
 {
   if(dziel!=0)
@@ -104,28 +112,54 @@ LZespolona  operator / (LZespolona  L1,  double dziel)
     std::cerr<<"Nie mozna dzielic przez 0"<<std::endl;
         exit(EXIT_FAILURE);
   }
-
 }
 
+/*!
+ * Realizuje porównanie liczb zespolonych.
+ * Argumenty:
+ *    L1 - pierwszy skladnik porownania,
+ *    L2 - drugi skladnik porownania.
+ * Zwraca:
+ *    TRUE gdy wartosci sa rowne.
+ *    FALSE gdy wartosci nie sa rowne.
+ */
 bool operator == (LZespolona  L1,  LZespolona  L2)
 {
-  if(L1.re-L2.re==0 && L1.im-L2.im==0)
-{
-  //std::cout<<"prawda";
-  return true;
-}
-
+  double eps = 0.00001;
+  if(L1.re-L2.re <eps)
+  {
+    if(L1.im-L2.im<eps)
+    return true;
+  }
   else
   {
     //std::cout<<"falsz";
     return false;
   }
 }
+/*!
+ * Realizuje porównanie liczb zespolonych.
+ * Argumenty:
+ *    L1 - pierwszy skladnik porownania,
+ *    L2 - drugi skladnik porownania.
+ * Zwraca:
+ *    FALSE gdy wartosci sa rowne.
+ *    TRUE gdy wartosci nie sa rowne.
+ */
 bool  operator != (LZespolona  L1,  LZespolona  L2)
 {
   return !(L1==L2);
 }
 ///////////////////////
+
+/*!
+ * Realizuje operacje wczytania liczby zespolonej
+ * Argumenty:
+ *    czyt - nazwa strumienia
+ *    L1 - liczba do wczytania.
+ * Zwraca:
+ *    wartosc strumienia
+ */
  std::istream  &operator >> (std::istream & czyt, LZespolona &L1)
 {
   char znak;
@@ -135,7 +169,6 @@ bool  operator != (LZespolona  L1,  LZespolona  L2)
     if(znak!= '(')
     {
       czyt.setstate(std::ios::failbit);
-      //std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
     }
     czyt>>a;
     czyt>>b;
@@ -143,13 +176,11 @@ bool  operator != (LZespolona  L1,  LZespolona  L2)
     if(znak!= 'i')
     {
       czyt.setstate(std::ios::failbit);
-      //std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
     }
     czyt>>znak;
     if(znak!= ')')
     {
       czyt.setstate(std::ios::failbit);
-      //std::cerr<<"Bledny zapis liczby zespolonej."<<std::endl;
     }
 
     if(!czyt.fail())
@@ -160,7 +191,14 @@ bool  operator != (LZespolona  L1,  LZespolona  L2)
   return czyt;
 }
 
-
+/*!
+ * Realizuje operacje wypisania liczby zespolonej
+ * Argumenty:
+ *    wys - nazwa strumienia
+ *    L1 - liczba do wyswietlenia.
+ * Zwraca:
+ *    wartosc strumienia
+ */
 std::ostream  &operator << (std::ostream &wys, LZespolona L1)
 {
     wys << "(" << L1.re  << std::showpos << L1.im  << std::noshowpos <<  "i)";

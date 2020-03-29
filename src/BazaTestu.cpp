@@ -17,7 +17,7 @@ static WyrazenieZesp  TestLatwy[] =
   };
 
 /*
- * Analogicznie zdefiniuj test "trudne"
+ * Tablica zawierająca test trudny.
  *
  */
 

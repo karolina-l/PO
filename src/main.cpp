@@ -37,13 +37,12 @@ int main(int argc, char **argv)
 //////////////////////////////////////////////////////////////
   while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe))
   {
-    cout << " Oblicz ";
+    cout<< std::endl << " Oblicz ";
     cout << WyrZ_PytanieTestowe << ":"<<std::endl;
     wyn=Oblicz(WyrZ_PytanieTestowe);
-    cout <<"wyn: " <<wyn<<std::endl;
     int licznik_prob=0;
 
-    while (licznik_prob<3)
+    while (licznik_prob<4)
     {
       std::cin>>odp;
       if(std::cin.fail())
@@ -59,17 +58,15 @@ int main(int argc, char **argv)
       }
     }
 
-      cout<<odp.re<<", "<<wyn.re<<std::endl;
-      cout<<odp.im<<", "<<wyn.im<<std::endl;
     if(odp==wyn)
     {
       dodaj_dobra(stat);
-      cout<<"dobra odpowiedz! ";
+      cout<<"dobra odpowiedz! "<<std::endl;
     }
     else
     {
       dodaj_zla(stat);
-      cout<< "zla odpowiedz :(";
+      cout<< "zla odpowiedz :("<<std::endl;
     }
   }
 
